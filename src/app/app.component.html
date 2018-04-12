@@ -3,18 +3,46 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <img width="300" alt="Angular Logo" src="https://lh3.ggpht.com/u9fEEhVWZ6uT36e3FIqmq30KKi-WViB0gECUWTYxF2d7qda3gNvxOwYJAdjAl7fecvD9=w300-rw">
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Route No">
+    </mat-form-field>
+  </div>
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
 
+    <ng-container matColumnDef="route_no">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Route No </mat-header-cell>
+      <mat-cell *matCellDef="let element" > {{element.route_no}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="service_type">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Service Type </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.service_type}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="origin">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Origin </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.origin}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="destination">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Destination </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.destination}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="journy_time">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Journy Time </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.journy_time}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
